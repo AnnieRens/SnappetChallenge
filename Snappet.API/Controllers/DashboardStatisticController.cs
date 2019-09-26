@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Snappet.Core.Queries.ClassWorkStatistic;
 
 namespace Snappet.API.Controllers
@@ -12,10 +14,13 @@ namespace Snappet.API.Controllers
     public class DashboardStatisticController : ControllerBase
     {
         private readonly IGetClassWorkStatisticQuery _getClassWorkStatisticQuery;
+        private readonly ILogger _logger;
 
-        public DashboardStatisticController(IGetClassWorkStatisticQuery getClassWorkStatisticQuery)
+        public DashboardStatisticController(IGetClassWorkStatisticQuery getClassWorkStatisticQuery,
+            ILogger logger)
         {
             _getClassWorkStatisticQuery = getClassWorkStatisticQuery;
+            _logger = logger;
         }
 
         [HttpGet("class-work")]
@@ -39,8 +44,9 @@ namespace Snappet.API.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                throw;
+                _logger.LogError(e.Message);
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ApiResponse.Error(e.Message));
             }
         }
     }
