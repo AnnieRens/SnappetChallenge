@@ -2,7 +2,7 @@
 
 namespace Snappet.Core.Queries.ClassWorkStatistic
 {
-    public interface IGetClassWorkStatisticQuery : IAsyncQuery<GetClassWorkStatisticCommandArgs, List<PupilWorkStatisticModel>>
+    public interface IGetClassWorkStatisticQuery : IAsyncQuery<GetClassWorkStatisticQueryArgs, List<PupilWorkStatisticModel>>
     {
     }
 }

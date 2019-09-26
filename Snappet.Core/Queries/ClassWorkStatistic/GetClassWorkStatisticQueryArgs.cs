@@ -2,7 +2,7 @@
 
 namespace Snappet.Core.Queries.ClassWorkStatistic
 {
-    public class GetClassWorkStatisticCommandArgs
+    public class GetClassWorkStatisticQueryArgs
     {
         public DateTimeOffset StartDateTime { get; set; }
 

@@ -14,7 +14,7 @@ namespace Snappet.Core.Queries.ClassWorkStatistic
             _classStatisticRepository = classStatisticRepository;
         }
 
-        public async Task<List<PupilWorkStatisticModel>> Ask(GetClassWorkStatisticCommandArgs input)
+        public async Task<List<PupilWorkStatisticModel>> Ask(GetClassWorkStatisticQueryArgs input)
         {
             var classStatisticData = _classStatisticRepository.GetClassWorkStatistic().ToList();
 

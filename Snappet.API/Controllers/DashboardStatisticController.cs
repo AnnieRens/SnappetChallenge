@@ -26,7 +26,7 @@ namespace Snappet.API.Controllers
                 var startDateTime = new DateTimeOffset(2015, 3, 24, 0, 0, 0, TimeSpan.Zero);
                 var endDateTime = startDateTime.AddDays(1);
 
-                var statisticQueryArgs = new GetClassWorkStatisticCommandArgs
+                var statisticQueryArgs = new GetClassWorkStatisticQueryArgs
                 {
                     StartDateTime = startDateTime,
                     EndDateTime = endDateTime
