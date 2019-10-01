@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Snappet.Core.Queries.ClassWorkStatistic;
+using Snappet.Core;
 using Snappet.Core.Repository;
 
 namespace Snappet.API
@@ -23,13 +23,22 @@ namespace Snappet.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddScoped<IGetClassWorkStatisticQuery, GetClassWorkStatisticQuery>(); 
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
 
-            // Initialize repository wih dataset
-            var currentProjectPath = Directory.GetCurrentDirectory();
-            var datasetFileName = "work.json";
-            var datasetPath = Path.Combine(currentProjectPath, datasetFileName);
-            services.AddScoped<IClassStatisticRepository, ClassStatisticRepository>(x => new ClassStatisticRepository(datasetPath));
+            ConfigureDataLayer(services);
+
+            // Configure Students
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<IStudentsService, StudentsService>();
+
+            // Configure Exercises and Statistic
+            services.AddScoped<IExercisesSubmitAnswersRepository, ExercisesSubmitAnswersRepository>();
+            services.AddScoped<IClassWorkStatisticService, ClassWorkStatisticService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +56,16 @@ namespace Snappet.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private void ConfigureDataLayer(IServiceCollection services)
+        {
+            // Initialize repository with dataset
+            var currentProjectPath = Directory.GetCurrentDirectory();
+            var datasetFileName = "work.json"; // todo replace to json config
+            var datasetPath = Path.Combine(currentProjectPath, datasetFileName);
+
+            services.AddScoped<ClassContext, ClassContext>(x => new ClassContext(datasetPath));
         }
     }
 }
