@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
-import {ClassProgressItem} from '../models/class-progress-item.model';
-import {ClassWorkProgressService} from '../services/class-work-progress.service';
+import {ClassProgressItem} from '../../models/class-progress-item.model';
+import {ClassWorkProgressService} from '../../services/class-work-progress.service';
 
 @Component({
   selector: 'app-class-work-progress',
@@ -35,7 +35,7 @@ export class ClassWorkProgressComponent implements OnInit {
       this.classProgressItems = res;
       this.chartLoading = false;
 
-      this.chartData = this.classProgressItems.map(v => ({x: v.date, y: v.value}));
+      this.chartData = this.classProgressItems.map(v => ({x: v.date, y: v.value.toFixed(2)}));
 
       this.drawChart();
     }
@@ -52,6 +52,7 @@ export class ClassWorkProgressComponent implements OnInit {
         labels: labels,
         datasets: [
           {
+            label: 'Class progress change',
             data: this.chartData,
             borderColor: '#00AEFF',
             fill: false
@@ -60,7 +61,7 @@ export class ClassWorkProgressComponent implements OnInit {
       },
       options: {
         legend: {
-          display: false
+          display: true
         },
         scales: {
           xAxes: [{

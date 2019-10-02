@@ -1,0 +1,18 @@
+<div *ngIf="error">
+  Something bad happened.
+</div>
+
+<div>
+  <div *ngIf="chartLoading">
+    Loading...
+  </div>
+  <div class="chart">
+    <canvas #lineChart>{{ chart }}</canvas>
+  </div>
+</div>
+
+
+
+
+
+

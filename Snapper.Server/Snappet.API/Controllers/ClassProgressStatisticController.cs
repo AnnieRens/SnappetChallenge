@@ -28,5 +28,14 @@ namespace Snappet.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("by-students")]
+        public async Task<IActionResult> GetStudentProgressStatistic(DateTime startDate, DateTime endDate)
+        {
+            var result = _classWorkStatisticService.GetStudentsProgress(startDate, endDate);
+            var response = ApiResponse<List<TimeSeriesPair<UserProgress>>>.Success(result);
+
+            return Ok(response);
+        }
     }
 }

@@ -1,0 +1,15 @@
+.head-bar {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0;
+  overflow: hidden;
+  border-bottom-style: solid;
+  border-bottom-color: #9dcd1c;
+  border-bottom-width:  5px;
+  height: 50px;
+  width: 100%;
+}
+
+h2 {
+  color: #34a3d7;
+}
