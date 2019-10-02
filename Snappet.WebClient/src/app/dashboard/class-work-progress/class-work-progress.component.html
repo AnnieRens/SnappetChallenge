@@ -1,0 +1,38 @@
+<p>Students' work statistic</p>
+
+<div *ngIf="error">
+  Something bad happened.
+</div>
+
+
+<div>
+
+  <div *ngIf="chartLoading">
+    Loading...
+  </div>
+
+
+    <div>
+      <!--<div style="display: block">-->
+        <canvas #lineChart>{{ chart }}</canvas>
+      <!--</div>-->
+    </div>
+
+
+  <div class="stat-options">
+    <!--<input class="form-control"-->
+           <!--type="text" ngxDaterangepickerMd-->
+           <!--[(ngModel)]="selectedDateRange"-->
+           <!--(ngModelChange)="onDateRangeChange($event)"/>-->
+  </div>
+
+  <div class="stat-chart">
+
+  </div>
+
+</div>
+
+
+
+
+

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Snappet.Core.Repository;
 
-namespace Snappet.Core
+namespace Snappet.Core.AppService
 {
     public class ClassWorkStatisticService : IClassWorkStatisticService
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using API;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Snappet.Core;
+using Snappet.Core.AppService;
 
 namespace Snappet.API.Controllers
 {

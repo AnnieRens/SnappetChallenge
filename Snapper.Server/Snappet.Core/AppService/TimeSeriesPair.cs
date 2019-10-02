@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Snappet.Core
+namespace Snappet.Core.AppService
 {
     public class TimeSeriesPair<T>
     {

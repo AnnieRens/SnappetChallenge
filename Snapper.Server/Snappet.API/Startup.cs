@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Snappet.Core;
+using Snappet.Core.AppService;
 using Snappet.Core.Repository;
 
 namespace Snappet.API

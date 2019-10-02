@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Snappet.Core.Repository;
 
-namespace Snappet.Core
+namespace Snappet.Core.AppService
 {
     public class StudentsService : IStudentsService
     {
