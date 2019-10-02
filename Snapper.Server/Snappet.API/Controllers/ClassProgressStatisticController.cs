@@ -14,12 +14,10 @@ namespace Snappet.API.Controllers
     public class ClassProgressStatisticController : ControllerBase
     {
         private readonly IClassWorkStatisticService _classWorkStatisticService;
-        //private readonly ILogger _logger;
 
         public ClassProgressStatisticController(IClassWorkStatisticService classWorkStatisticService)
         {
             _classWorkStatisticService = classWorkStatisticService;
-            //_logger = logger;
         }
 
         [HttpGet]
